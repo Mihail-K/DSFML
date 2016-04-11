@@ -44,7 +44,7 @@ struct SoundFile
 	{
 		import dsfml.system.string;
 		bool toReturn = sfSoundFile_openReadFromFile(m_soundFile, toStringz(filename));
-		err.write(toString(sfErr_getOutput()));
+		err.write(dsfml.system.string.toString(sfErr_getOutput()));
 		return toReturn;
 	}
 
@@ -52,7 +52,7 @@ struct SoundFile
 	{
 		import dsfml.system.string;
 		bool toReturn = sfSoundFile_openReadFromMemory(m_soundFile, data.ptr, data.length);
-		err.write(toString(sfErr_getOutput()));
+		err.write(dsfml.system.string.toString(sfErr_getOutput()));
 		return toReturn;
 	}
 	bool openReadFromStream(InputStream stream)
@@ -61,7 +61,7 @@ struct SoundFile
 		m_stream = new soundFileStream(stream);
 
 		bool toReturn  = sfSoundFile_openReadFromStream(m_soundFile, m_stream);
-		err.write(toString(sfErr_getOutput()));
+		err.write(dsfml.system.string.toString(sfErr_getOutput()));
 		return toReturn;
 	}
 
@@ -69,7 +69,7 @@ struct SoundFile
 	{
 		import dsfml.system.string;
 		bool toReturn = sfSoundFile_openWrite(m_soundFile, toStringz(filename),channelCount,sampleRate);
-		err.write(toString(sfErr_getOutput()));
+		err.write(dsfml.system.string.toString(sfErr_getOutput()));
 		return toReturn;
 	}
 
@@ -98,7 +98,7 @@ struct SoundFile
 		//but the user should see the error prior to the call that will make the 
 		//program explode.
 		
-		string temp = toString(sfErr_getOutput());
+		string temp = dsfml.system.string.toString(sfErr_getOutput());
 		if(temp.length > 0)
 		{
 		    err.write(temp);
